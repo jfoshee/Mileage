@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mileage", "Mileage\Mileage.csproj", "{EE8186E1-1892-425B-891A-F81713FA03EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mileage.Tests", "Mileage.Tests\Mileage.Tests.csproj", "{30DF5124-FF44-4836-A08A-45480528F548}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE8186E1-1892-425B-891A-F81713FA03EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8186E1-1892-425B-891A-F81713FA03EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8186E1-1892-425B-891A-F81713FA03EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8186E1-1892-425B-891A-F81713FA03EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DF5124-FF44-4836-A08A-45480528F548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DF5124-FF44-4836-A08A-45480528F548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DF5124-FF44-4836-A08A-45480528F548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DF5124-FF44-4836-A08A-45480528F548}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
