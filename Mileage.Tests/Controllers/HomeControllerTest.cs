@@ -22,7 +22,7 @@ namespace Mileage.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Welcome to ASP.NET MVC!", result.ViewBag.Message);
+            StringAssert.Contains(result.ViewBag.Message, "Mileage");
         }
 
         [TestMethod]
