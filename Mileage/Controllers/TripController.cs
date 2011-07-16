@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Mileage.Models;
 
@@ -18,6 +15,7 @@ namespace Mileage.Controllers
 
         public ViewResult Index()
         {
+            throw new ArgumentNullException("bla");
             return View(MileageDB.Trips);
         }
     }
