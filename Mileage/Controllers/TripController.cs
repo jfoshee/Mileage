@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Mileage.Models;
 
 namespace Mileage.Controllers
@@ -15,7 +14,6 @@ namespace Mileage.Controllers
 
         public ViewResult Index()
         {
-            throw new ArgumentNullException("bla");
             return View(MileageDB.Trips);
         }
     }

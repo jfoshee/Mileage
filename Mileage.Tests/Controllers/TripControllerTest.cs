@@ -24,7 +24,7 @@ namespace Mileage.Tests.Controllers
             Assert.IsNotNull(mileageDB);
         }
 
-        [TestMethod, Ignore]
+        [TestMethod]
         public void TripIndex()
         {
             // Arrange
