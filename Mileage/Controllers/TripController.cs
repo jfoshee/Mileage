@@ -10,7 +10,6 @@ namespace Mileage.Controllers
         public TripController()
         {
             MileageDB = new MileageDB();
-            MileageDB.SaveChanges();
         }
 
         public ViewResult Index()
