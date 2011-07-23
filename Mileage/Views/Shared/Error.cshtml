@@ -1,19 +1,8 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
-@{
-    ViewBag.Title = "Error";
-    var exception = Server.GetLastError();
-    ViewBag.Message = exception.Message;
-    ViewBag.CallStack = exception.StackTrace.ToString();
-}
-
 <h2>
     Sorry, an error occurred while processing your request.
 </h2>
-<p>
-    @ViewBag.Message
-</p>
 
-<p>
-    @ViewBag.CallStack
-</p>
+<p>@Model.Exception.ToString()</p>
+
