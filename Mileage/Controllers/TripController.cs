@@ -16,5 +16,18 @@ namespace Mileage.Controllers
         {
             return View(MileageDB.Trips);
         }
+
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult Create(Trip newTrip)
+        {
+            MileageDB.Trips.Add(newTrip);
+            MileageDB.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

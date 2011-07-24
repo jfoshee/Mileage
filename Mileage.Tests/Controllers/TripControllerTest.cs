@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mileage.Controllers;
-using System.Web.Mvc;
 using Mileage.Models;
 
 namespace Mileage.Tests.Controllers
@@ -12,31 +11,82 @@ namespace Mileage.Tests.Controllers
     [TestClass]
     public class TripControllerTest
     {
+        private TripController Subject { get; set; }
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            Subject = new TripController();
+        }
+
         [TestMethod]
         public void DefaultConstruction()
         {
             // Arrange
-            var subject = new TripController();
-            MileageDB mileageDB = subject.MileageDB;
+            MileageDB mileageDB = Subject.MileageDB;
 
             // Assert
-            Assert.IsInstanceOfType(subject, typeof(Controller));
+            Assert.IsInstanceOfType(Subject, typeof(Controller));
             Assert.IsNotNull(mileageDB);
         }
 
         [TestMethod]
         public void TripIndex()
         {
-            // Arrange
-            var subject = new TripController();
-
             // Act
-            ViewResult result = subject.Index();
+            ViewResult result = Subject.Index();
+
+            // Assert
+            Assert.IsInstanceOfType(result.Model, typeof(DbSet<Trip>));
+        }
+
+        [TestMethod]
+        public void CreateRequestShouldReturnView()
+        {
+            // Act
+            ViewResult result = Subject.Create();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Model);
-            Assert.AreSame(subject.MileageDB.Trips, result.Model);
         }
+
+        [TestMethod]
+        public void CreateShouldAddTripToDatabase()
+        {
+            // Arrange
+            var newTrip = new Trip();
+
+            // Act
+            RedirectToRouteResult result = Subject.Create(newTrip);
+
+            // Assert
+            CollectionAssert.Contains(Subject.MileageDB.Trips.ToList(), newTrip);
+        }
+
+        [TestMethod]
+        public void CreateShouldRedirectToIndex()
+        {
+            // Act
+            RedirectToRouteResult result = Subject.Create(new Trip());
+
+            // Assert
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
+
+        [TestMethod]
+        public void CreateShouldHavePostAttribute()
+        {
+            // Arrange
+            var createMethod = Subject.GetType().GetMethod("Create", new Type[] { typeof(Trip) });
+
+            // Act
+            var attributes = createMethod.GetCustomAttributes(false);
+
+            // Assert
+            Assert.IsInstanceOfType(attributes.First(), typeof(HttpPostAttribute));
+        }
+
+        // TODO: what if savechanges fails in Create
+
     }
 }
