@@ -59,10 +59,24 @@ namespace Mileage.Tests.Controllers
             var mockTrips = MockTrips();
 
             // Act
-            RedirectToRouteResult result = Subject.Create(newTrip);
+            Subject.Create(newTrip);
 
             // Assert
             mockTrips.Verify(t => t.Add(newTrip));
+        }
+
+        [TestMethod]
+        public void ShouldSaveChanges()
+        {
+            // Arrange
+            var mockDb = new Mock<MileageDB>();
+            Subject.MileageDB = mockDb.Object;
+
+            // Act
+            Subject.Create(new Trip());
+
+            // Assert
+            mockDb.Verify(db => db.SaveChanges());
         }
 
         [TestMethod]
