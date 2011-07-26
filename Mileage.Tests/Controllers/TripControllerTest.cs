@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mileage.Controllers;
 using Mileage.Models;
+using Moq;
 
 namespace Mileage.Tests.Controllers
 {
@@ -50,22 +51,26 @@ namespace Mileage.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        [TestMethod, Ignore]
+        [TestMethod]
         public void CreateShouldAddTripToDatabase()
         {
             // Arrange
             var newTrip = new Trip();
+            var mockTrips = MockTrips();
 
             // Act
             RedirectToRouteResult result = Subject.Create(newTrip);
 
             // Assert
-            CollectionAssert.Contains(Subject.MileageDB.Trips.ToList(), newTrip);
+            mockTrips.Verify(t => t.Add(newTrip));
         }
 
-        [TestMethod, Ignore]
+        [TestMethod]
         public void CreateShouldRedirectToIndex()
         {
+            // Arrange
+            MockTrips();
+
             // Act
             RedirectToRouteResult result = Subject.Create(new Trip());
 
@@ -88,13 +93,12 @@ namespace Mileage.Tests.Controllers
 
         // TODO: what if savechanges fails in Create
 
-    }
+        private Mock<IDbSet<Trip>> MockTrips()
+        {
+            var mockTrips = new Mock<IDbSet<Trip>>();
+            Subject.MileageDB.Trips = mockTrips.Object;
+            return mockTrips;
+        }
 
-    //class MockMileageDB : MileageDB
-    //{
-    //    public MockMileageDB()
-    //    {
-    //        this.Trips = new DbSet<Trip>();
-    //    }
-    //}
+    }
 }

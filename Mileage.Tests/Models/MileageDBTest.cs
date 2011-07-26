@@ -12,7 +12,7 @@ namespace Mileage.Tests.Models
         {
             // Arrange
             var subject = new MileageDB();
-            DbSet<Trip> trips = subject.Trips;
+            IDbSet<Trip> trips = subject.Trips;
 
             // Assert
             Assert.IsInstanceOfType(subject, typeof(DbContext));

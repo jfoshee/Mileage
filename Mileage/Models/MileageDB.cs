@@ -4,6 +4,6 @@ namespace Mileage.Models
 {
     public class MileageDB : DbContext
     {
-        public DbSet<Trip> Trips { get; set; }
+        public IDbSet<Trip> Trips { get; set; }
     }
 }
