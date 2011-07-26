@@ -71,6 +71,7 @@ namespace Mileage.Tests.Controllers
             // Arrange
             var mockDb = new Mock<MileageDB>();
             Subject.MileageDB = mockDb.Object;
+            MockTrips();
 
             // Act
             Subject.Create(new Trip());
