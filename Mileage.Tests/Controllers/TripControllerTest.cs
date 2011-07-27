@@ -41,8 +41,10 @@ namespace Mileage.Tests.Controllers
             Assert.IsInstanceOfType(result.Model, typeof(DbSet<Trip>));
         }
 
+        #region Create
+
         [TestMethod]
-        public void CreateRequestShouldReturnView()
+        public void RequestShouldReturnView()
         {
             // Act
             ViewResult result = Subject.Create();
@@ -52,7 +54,7 @@ namespace Mileage.Tests.Controllers
         }
 
         [TestMethod]
-        public void CreateShouldAddTripToDatabase()
+        public void ShouldAddTripToDatabase()
         {
             // Arrange
             var newTrip = new Trip();
@@ -81,7 +83,7 @@ namespace Mileage.Tests.Controllers
         }
 
         [TestMethod]
-        public void CreateShouldRedirectToIndex()
+        public void ShouldRedirectToIndex()
         {
             // Arrange
             MockTrips();
@@ -94,7 +96,7 @@ namespace Mileage.Tests.Controllers
         }
 
         [TestMethod]
-        public void CreateShouldHavePostAttribute()
+        public void ShouldHavePostAttribute()
         {
             // Arrange
             var createMethod = Subject.GetType().GetMethod("Create", new Type[] { typeof(Trip) });
@@ -115,5 +117,12 @@ namespace Mileage.Tests.Controllers
             return mockTrips;
         }
 
+        #endregion
+
+        #region Edit
+
+
+
+        #endregion
     }
 }

@@ -18,7 +18,7 @@
             @Html.LabelFor(model => model.OdometerStart)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.OdometerStart)
+            @Html.TextBoxFor(model => model.OdometerStart, new { @class = "text-box single-line", type = "number" })
             @Html.ValidationMessageFor(model => model.OdometerStart)
         </div>
 
@@ -26,7 +26,7 @@
             @Html.LabelFor(model => model.OdometerEnd)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.OdometerEnd)
+            @Html.TextBoxFor(model => model.OdometerEnd, new { @class = "text-box single-line", type = "number" })
             @Html.ValidationMessageFor(model => model.OdometerEnd)
         </div>
 
