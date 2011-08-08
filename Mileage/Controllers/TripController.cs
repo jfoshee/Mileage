@@ -10,6 +10,7 @@ namespace Mileage.Controllers
         public TripController()
         {
             MileageDB = new MileageDB();
+            //Database.SetInitializer<MileageDB>(new DropCreateDatabaseAlways<MileageDB>());
         }
 
         public ViewResult Index()

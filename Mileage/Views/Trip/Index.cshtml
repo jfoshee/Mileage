@@ -17,6 +17,18 @@
         <th>
             OdometerEnd
         </th>
+        <th>
+            StartTime
+        </th>
+        <th>
+            EndTime
+        </th>
+        <th>
+            StartLocation
+        </th>
+        <th>
+            EndLocation
+        </th>
         <th></th>
     </tr>
 
@@ -27,6 +39,18 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OdometerEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLocation)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
